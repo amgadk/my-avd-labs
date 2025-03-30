@@ -57,9 +57,9 @@ l3leaf:
     # Definition of pool of IPs to be used in P2P links
     uplink_ipv4_pool: 10.255.255.0/24
     # Definition of pool of IPs to be used for MLAG peer-link connectivity
-    mlag_peer_ipv4_pool: 10.255.1.64/26
+    mlag_peer_ipv4_pool: 10.255.2.64/26
     # iBGP Peering between MLAG peers
-    mlag_peer_l3_ipv4_pool: 10.255.1.96/26
+    mlag_peer_l3_ipv4_pool: 10.255.3.96/26
     # Virtual router mac for VNIs assigned to Leaf switches in format xx:xx:xx:xx:xx:xx
     virtual_router_mac_address: 00:1c:73:00:00:99
     spanning_tree_priority: 4096
