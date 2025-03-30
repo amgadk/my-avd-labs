@@ -30,9 +30,9 @@ tenants:
             enabled: true
             ip_address_virtual: 10.10.12.1/24
 
-    l2vlans:
+    #l2vlans:
       # These are pure L2 vlans. They do not have a SVI defined in the l3leafs and they will be bridged inside the VXLAN fabric
-      - id: 3401
-        name: L2_VLAN3401
-      - id: 3402
-        name: L2_VLAN3402
+      #- id: 3401
+        #name: L2_VLAN3401
+      #- id: 3402
+        #name: L2_VLAN3402
