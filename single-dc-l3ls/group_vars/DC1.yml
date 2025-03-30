@@ -2,6 +2,8 @@
 # Default gateway used for the management interface
 #mgmt_gateway: 172.16.1.1
 mgmt_gateway: 192.168.0.1
+###If a management vrf is to be used you can define it in the next line, or just ask for default###
+mgmt_interface_vrf: default
 # Spine switch group
 spine:
   # Definition of default values that will be configured to all nodes defined in this group
