@@ -1,6 +1,6 @@
 ---
 - name: Deploy Configurations to Devices Using CloudVision Portal # (1)!
-  hosts: CLOUDVISION
+  hosts: FABRIC
   gather_facts: false
   connection: local
   tasks:
@@ -13,9 +13,11 @@
       ansible.builtin.import_role:
         name: arista.avd.cv_deploy
       vars:
-        cv_server: 192.168.0.5
-        cv_token: "{{ lookup('file', '../avdtoken') }}"
+        cv_server: 10.18.149.167
+        cv_token: "{{ lookup('file', 'avdtoken') }}"
         cv_run_change_control: false
-        deploy_to_cv_accept_preview: true
+        deploy_to_cv_accept_preview: false
+        cv_verify_certs: false
+        cv_skip_missing_devices: true
         #configlet_name_template: "AVD-${hostname}"
         #cv_submit_workspace: true
