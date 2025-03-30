@@ -5,9 +5,17 @@
   connection: local
   tasks:
 
-    - name: Deploy Configurations to CloudVision # (2)!
+    - name: Provision CVP with AVD configuration
+      run_once: true
+      delegate_to: localhost
+      # https://avd.arista.com/4.10/docs/plugins/Modules_and_action_plugins/cv_workflow.html
+      # https://avd.arista.com/4.10/roles/cv_deploy/index.html
       ansible.builtin.import_role:
-        name: arista.avd.eos_config_deploy_cvp
+        name: arista.avd.cv_deploy
       vars:
-        cv_collection: v3 # (3)!
-        fabric_name: FABRIC # (4)!
+        cv_server: www.cv-staging.corp.arista.io
+        cv_token: "{{ lookup('file', '../avdtoken') }}"
+        cv_run_change_control: false
+        deploy_to_cv_accept_preview: true
+        #configlet_name_template: "AVD-${hostname}"
+        #cv_submit_workspace: true
