@@ -13,7 +13,7 @@
       ansible.builtin.import_role:
         name: arista.avd.cv_deploy
       vars:
-        cv_server: www.cv-staging.corp.arista.io
+        cv_server: 192.168.0.5
         cv_token: "{{ lookup('file', '../avdtoken') }}"
         cv_run_change_control: false
         deploy_to_cv_accept_preview: true
