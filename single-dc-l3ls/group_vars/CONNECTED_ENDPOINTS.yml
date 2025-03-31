@@ -22,7 +22,7 @@ servers:
         # Definition of the pair of ports as port channel.
         port_channel:
           # The port-channel name on the endpoint that will be used in the port-channel description.
-          endpoint_port_channel: Bond1
+          #endpoint_port_channel: Bond1
           # Port channel mode for LACP.
           mode: active
 
