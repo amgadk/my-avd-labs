@@ -4,7 +4,7 @@ all:
     CLOUDVISION:
       hosts:
         cvp:
-          # Ansible variables used by the ansible_avd and ansible_cvp roles to push configuration to devices via CVP
+          ### Ansible variables used by the ansible_avd and ansible_cvp roles to push configuration to devices via CVP
           ansible_host: 10.18.128.112
           ansible_user: cvpadmin
           ansible_password: cvp123!
@@ -17,7 +17,7 @@ all:
       vars:
         ansible_user: arista
         ansible_ssh_pass: "Arista123!"
-# Use this section if you want to perform testing via the eAPI
+        ### Use this section if you want to perform testing via the eAPI
         ansible_connection: httpapi
         ansible_httpapi_use_ssl: True
         ansible_httpapi_validate_certs: False
@@ -25,7 +25,7 @@ all:
         ansible_httpapi_port: 443
         ansible_become: yes
         ansible_become_method: enable
-# Use this section if you want to perform testing via the CLI through SSH
+        ### Use this section if you want to perform testing via the CLI through SSH
         # ansible_connection: network_cli
         # ansible_network_os: eos
         # ansible_become: yes
