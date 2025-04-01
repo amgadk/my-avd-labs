@@ -13,7 +13,7 @@
       ansible.builtin.import_role:
         name: arista.avd.cv_deploy
       vars:
-        cv_server: 10.18.157.204
+        cv_server: 10.18.128.112
         cv_token: "{{ lookup('file', 'avdtoken') }}"
         cv_submit_workspace: true
         cv_run_change_control: true
