@@ -88,7 +88,7 @@ bgp_update_wait_install: false
 bgp_update_wait_for_convergence: false
 
 # Needed for Arista ATD Lab Environment
-dns_domain: atd.lab
-mgmt_interface: Management0
-mgmt_interface_vrf: MGMT
-mgmt_gateway: 192.168.0.1
+#dns_domain: atd.lab
+#mgmt_interface: Management0
+#mgmt_interface_vrf: MGMT
+#mgmt_gateway: 192.168.0.1
