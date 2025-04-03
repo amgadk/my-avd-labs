@@ -3,8 +3,8 @@ all:
   children:
     CVP_cluster:
       vars:
-          ansible_user: arista
-          ansible_password: PASSWORD-GOES-HERE
+          ansible_user: cvpadmin
+          ansible_password: cvp123!
           ansible_connection: httpapi
           ansible_httpapi_use_ssl: True
           ansible_httpapi_validate_certs: False
@@ -17,7 +17,7 @@ all:
     FABRIC:
       vars:
         ansible_user: arista
-        ansible_ssh_pass: PASSWORD-GOES-HERE # If using SSH keys, this can be removed
+        ansible_ssh_pass: "Arista123!"
 # Use this section if you want to perform testing via the eAPI
         ansible_connection: httpapi
         ansible_httpapi_use_ssl: True
@@ -38,18 +38,28 @@ all:
           hosts:
             dc1-spine1:
               ansible_host: 10.18.128.51
-            dc1-spine1:
-              ansible_host: 10.18.128.51
-            spine2:
-            spine3:
+            dc1-spine2:
+              ansible_host: 10.18.128.52
+            dc1-spine3:
+              ansible_host: 10.18.128.53
+            dc1-spine4:
+              ansible_host: 10.18.128.54
         LEAFS:
           vars: 
             type: l3leaf
           hosts:
-            leaf1:
-            leaf2:
-            leaf3:
-            leaf4:
+            dc1-leaf1:
+              ansible_host: 10.18.129.31
+            dc1-leaf2:
+              ansible_host: 10.18.129.32
+            dc1-leaf3:
+              ansible_host: 10.18.129.33
+            dc1-leaf4:
+              ansible_host: 10.18.129.34
+            dc1-borderleaf1:
+              ansible_host: 10.18.129.35
+            dc1-borderleaf2:
+              ansible_host: 10.18.129.36
     EVPN_SERVICES:
       children:
         LEAFS:
