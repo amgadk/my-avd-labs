@@ -36,7 +36,10 @@ all:
           vars:
             type: spine
           hosts:
-            spine1:
+            dc1-spine1:
+              ansible_host: 10.18.128.51
+            dc1-spine1:
+              ansible_host: 10.18.128.51
             spine2:
             spine3:
         LEAFS:
