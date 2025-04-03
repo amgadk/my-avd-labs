@@ -11,30 +11,33 @@ evpn_vlan_aware_bundles: false
 # Spine Switches
 spine:
   defaults:
-    platform: cEOS-lab
+    platform: vEOS-lab
     bgp_as: 65001
     loopback_ipv4_pool: 192.168.101.0/24
     mlag: false
   nodes:
-    - name: spine1
+    - name: dc1-spine1
       id: 11
-      mgmt_ip: 192.168.0.11/24
-    - name: spine2
+      mgmt_ip: 192.168.0.111/24
+    - name: dc1-spine2
       id: 12
-      mgmt_ip: 192.168.0.12/24
-    - name: spine3
+      mgmt_ip: 192.168.1.112/24
+    - name: dc1-spine3
       id: 13
-      mgmt_ip: 192.168.0.13/24
+      mgmt_ip: 192.168.0.113/24
+    - name: dc1-spine4
+      id: 13
+      mgmt_ip: 192.168.0.114/24
 
 # Leaf switches. Most leafs will be l3leaf, not l2leaf.
 l3leaf:
   defaults:
     bgp_as: 65100-65199 # Gives a range which will be auto-assigned
-    platform: cEOS-lab
+    platform: vEOS-lab
     loopback_ipv4_pool: 192.168.101.0/24 # This is loopback0 (underlay)
     vtep_loopback_ipv4_pool: 192.168.102.0/24 # This is loopback1 (VTEP)
     uplink_interfaces: [Ethernet3, Ethernet4, Ethernet5] # Leaf uplinks
-    uplink_switches: [spine1, spine2, spine3] # Where the leaf uplinks go
+    uplink_switches: [dc1-spine1, dc1-spine2, dc1-spine3, dc1-spine4] # Where the leaf uplinks go
     uplink_ipv4_pool: 192.168.103.0/24 # For the p2p interfaces to chopped up into /31s
     mlag_interfaces: [Ethernet1, Ethernet2] # MLAG peer link
     mlag_peer_ipv4_pool: 10.255.252.0/24 # MLAG peer IPs
@@ -47,25 +50,25 @@ l3leaf:
     - group: mlag1
     # bgp_as is configured automatically from the range, but can be overriden
       nodes:
-        - name: leaf1
+        - name: dc1-leaf1
           id: 1
-          mgmt_ip: 192.168.0.21/24
-          uplink_switch_interfaces: [Ethernet3, Ethernet3, Ethernet3]
-        - name: leaf2
+          mgmt_ip: 192.168.0.101/24
+          uplink_switch_interfaces: [Ethernet3, Ethernet3, Ethernet3, Ethernet3]
+        - name: dc1-leaf2
           id: 2
-          mgmt_ip: 192.168.0.22/24
-          uplink_switch_interfaces: [Ethernet4, Ethernet4, Ethernet4]
+          mgmt_ip: 192.168.0.102/24
+          uplink_switch_interfaces: [Ethernet4, Ethernet4, Ethernet4, Ethernet4]
     - group: mlag2
       bgp_as: 65299 # Overriden automatic allocation for host4/R1 peering
       nodes:
-        - name: leaf3
+        - name: dc1-leaf3
           id: 3
-          mgmt_ip: 192.168.0.23/24
-          uplink_switch_interfaces: [Ethernet5, Ethernet5, Ethernet5]
-        - name: leaf4
+          mgmt_ip: 192.168.0.103/24
+          uplink_switch_interfaces: [Ethernet5, Ethernet5, Ethernet5, Ethernet5]
+        - name: dc1-leaf4
           id: 4
-          mgmt_ip: 192.168.0.24/24
-          uplink_switch_interfaces: [Ethernet6, Ethernet6, Ethernet6]
+          mgmt_ip: 192.168.0.104/24
+          uplink_switch_interfaces: [Ethernet6, Ethernet6, Ethernet6, Ethernet6]
 
 
 
