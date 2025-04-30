@@ -95,7 +95,7 @@ Below is the basic configuration file for SPINE1:
 
 ``` shell
 --8<--
-examples/campus-fabric/switch-basic-configurations/SPINE1.cfg
+my-avd-labs/campus-fabric/switch-basic-configurations/SPINE1.cfg
 --8<--
 ```
 
