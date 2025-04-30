@@ -7,33 +7,6 @@ fabric_name: DC1_FABRIC
 design:
   type: l2ls
 
-# Ansible connectivity definitions
-# eAPI connectivity via HTTPS is specified (as opposed to network_cli via SSH)
-
-##ansible_connection: ansible.netcommon.httpapi
-
-# Specifies that we are indeed using Arista EOS
-
-##ansible_network_os: arista.eos.eos
-
-# This user/password must exist on the switches to enable Ansible access
-
-##ansible_user: admin
-##ansible_password: admin
-
-# User escalation (to enter enable mode)
-
-##ansible_become: true
-##ansible_become_method: enable
-
-# Use SSL (HTTPS)
-
-##ansible_httpapi_use_ssl: true
-
-# Do not try to validate certs
-
-##ansible_httpapi_validate_certs: false
-
 # Spine Switches
 l3spine:
   defaults:
