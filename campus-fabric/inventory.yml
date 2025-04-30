@@ -1,0 +1,60 @@
+---
+# inventory.yml
+DC1:
+  children:
+    DC1_FABRIC:
+      vars:
+        ansible_user: arista
+        ansible_ssh_pass: "Arista123!"
+# Use this section if you want to perform testing via the eAPI
+        ansible_connection: httpapi
+        ansible_httpapi_use_ssl: True
+        ansible_httpapi_validate_certs: False
+        ansible_network_os: eos
+        ansible_httpapi_port: 443
+        ansible_become: yes
+        ansible_become_method: enable
+# Use this section if you want to perform testing via the CLI through SSH
+        # ansible_connection: network_cli
+        # ansible_network_os: eos
+        # ansible_become: yes
+        # ansible_become_method: enable
+      children:
+        DC1_SPINES:
+          hosts:
+            spine1:
+              ansible_host: 10.18.132.87
+            spine2:
+              ansible_host: 10.18.172.64
+        DC1_LEAFS:
+          hosts:
+            pod-1-1:
+              ansible_host: 10.18.175.216
+            pod-1-2:
+              ansible_host: 10.18.133.31
+            pod-2-1:
+              ansible_host: 10.18.177.129
+            pod-2-2:
+              ansible_host: 10.18.177.125
+            pod-2-3:
+              ansible_host: 10.18.170.202
+            pod-2-4:
+              ansible_host: 10.18.177.126
+            pod-3-1:
+              ansible_host: 10.18.177.127
+            pod-3-2:
+              ansible_host: 10.18.149.50
+            pod-3-3:
+              ansible_host: 10.18.149.70
+            pod-4-1:
+              ansible_host: 10.18.175.213
+            pod-5-1:
+              ansible_host: 10.18.177.128
+    DC1_NETWORK_SERVICES:
+      children:
+        DC1_LEAFS:
+        DC1_SPINES:
+    DC1_NETWORK_PORTS:
+      children:
+        DC1_LEAFS:
+        DC1_SPINES:
