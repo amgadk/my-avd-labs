@@ -59,7 +59,7 @@ l3spine:
 leaf:
   defaults:
     platform: vEOS-lab
-    mlag_peer_ipv4_pool: 192.168.0.0/24
+    mlag_peer_ipv4_pool: 192.168.55.0/24
     spanning_tree_mode: mstp
     spanning_tree_priority: 16384
     #inband_mgmt_subnet: 10.10.10.0/24
