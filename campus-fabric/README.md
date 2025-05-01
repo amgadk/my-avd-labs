@@ -25,9 +25,11 @@ In a Campus network, it is common to refer to the location of the switches as **
 - MDF
   - Two Spine nodes
 - IDFs
-  - IDF1 supporting 96 users with two leafs (1RU - 48 ports each)
-  - IDF2 supporting 240 users with a Modular five slot chassis (48 ports per module)
-  - IDF3 supporting 480 users with five leafs (2RU - 96 ports each)
+  - POD1 supporting 96 users with two leafs (1RU - 48 ports each)
+  - POD2 supporting 192 users with 4 leafs (1RU - 48 ports each)
+  - POD3 supporting 144 users with 3 leafs (1RU - 48 ports each)
+  - POD4 supporting 48 users with 1 leaf (1RU - 48 ports each)
+  - POD5 supporting 48 users with 1 leaf (1RU - 48 ports each)
 
 The drawing below shows the physical topology used in this example. The interface assignment shown here are referenced across the entire example, so keep that in mind if this example must be adapted to a different topology.
 
@@ -49,9 +51,35 @@ Basic connectivity between the Ansible controller host and the switches must be 
 Below is the basic configuration file for SPINE1:
 
 ``` shell
---8<--
-my-avd-labs/campus-fabric/switch-basic-configurations/SPINE1.cfg
---8<--
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$E4w14C31asEyKhVE$wJc8N0Ao02.ExYCJqjK.fNyq/QXfSMM.eaoRRNAXBzhTEFsO0CMDhTtUCQMm/lg.kDh5U8u74n782N7RwTNXa/
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname SPINE1
+!
+spanning-tree mode mstp
+!
+management api http-commands
+   no shutdown
+!
+management api gnmi
+   transport grpc default
+!
+management api netconf
+   transport ssh default
+!
+interface Management0
+   ip address 172.16.100.101/24
+!
+no ip routing
+!
+ip route 0.0.0.0/0 172.16.100.1
+!
 ```
 
 ## Ansible Inventory
