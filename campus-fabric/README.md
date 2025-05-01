@@ -44,7 +44,6 @@ Basic connectivity between the Ansible controller host and the switches must be 
 - Username and Password defined
 - Management eAPI enabled
 
-???+ info
 
     The management interfaces used by cEOS and vEOS, are `Management0` and `Management1`, respectively. When using actual hardware switches, `Management1` is used. The included basic switch configurations may need to be adjusted for your environment.
 
