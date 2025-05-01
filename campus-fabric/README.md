@@ -136,65 +136,6 @@ To apply AVD input variables to the nodes in the fabric, we make use of Ansible 
 
 The tabs below show the Ansible **group_vars** used in this example.
 
-=== "DC1"
-    At the top level (DC1), the following variables are defined in the **group_vars/DC1.yml** file. These Ansible variables apply to all nodes in the fabric and is a common place to set AAA, users, NTP, and management interface settings. Update local_users and passwords for your environment.
-
-    You can create a sha512_password by creating a username and password on a switch and copy/paste it within double quotes here.
-
-    ``` yaml
-    --8<--
-    examples/campus-fabric/group_vars/DC1.yml
-    --8<--
-    ```
-
-=== "DC1_FABRIC"
-    At the Fabric level (DC1_FABRIC), the following variables are defined in the **group_vars/DC1_FABRIC.yml** file. The fabric name, design type (l2ls), spine and leaf defaults, ansible authentication, and interface links are defined at this level. Other variables you must supply include spanning-tree mode, priority, and an MLAG IP pool. Typically, an IDF has a unique set of VLANs. You may use the `filter.tags` variable to constrain which VLANs are built on an IDF node.
-
-    Variables applied under the node key type (spine/leaf) defaults section are inherited by nodes under each type. These variables may be overwritten under the node itself.
-
-    The spine interface used by a particular leaf is defined from the leaf's perspective with a variable called `uplink_switch_interfaces`. For example, LEAF2A has a unique variable `uplink_switch_interfaces: [Ethernet49/1, Ethernet49/1]` defined. This means that LEAF2A is connected to SPINE1's Ethernet49/1 and SPINE2's Ethernet49/1, respectively.
-
-    ``` yaml
-    --8<--
-    examples/campus-fabric/group_vars/DC1_FABRIC.yml
-    --8<--
-    ```
-
-=== "DC1_SPINES"
-    In an L2LS Campus design, there are two types of spine nodes: `spine` and `l3spine`. For a spine node to provide routing of SVIs, we set the type to `l3spine`.
-
-    ``` yaml
-    --8<--
-    examples/campus-fabric/group_vars/DC1_SPINES.yml
-    --8<--
-    ```
-
-=== "DC1_LEAFS"
-    In an L2LS Campus design, we have one type of leaf node: `leaf`.
-
-    ``` yaml
-    --8<--
-    examples/campus-fabric/group_vars/DC1_LEAFS.yml
-    --8<--
-    ```
-
-=== "DC1_NETWORK_SERVICES"
-    You add VLANs and SVIs to the Fabric by updating the **group_vars/DC1_NETWORK_SERVICES.yml** file. Each VLAN will be given a name and a list of tags. The tags filter the VLAN to specific Leaf Pairs. These variables are applied to the spine and leaf nodes since they are a part of this group.
-
-    ``` yaml
-    --8<--
-    examples/campus-fabric/group_vars/DC1_NETWORK_SERVICES.yml
-    --8<--
-    ```
-
-=== "DC1_NETWORK_PORTS"
-    Our fabric would not be complete without connecting some devices to it. Therefore, we define port profiles and network port ranges in the  **group_vars/DC1_NETWORKS_PORTS.yml** file. A single port_profile may be used across several switches and port ranges. In our example, we create a port profile called `PP-DOT1X` to define generic 802.1x (NAC) settings we wish to apply to a range of ports. The `network_ports` data model defines which switches and ports to apply the port profile. This data model allows a single regex statement to define a list of switches. In addition, the variable `switch_ports` expands into a range of ports. You can view more details of the `range_expand` filter [here](../../docs/plugins/Filter_plugins/range_expand.md). These variables are applied to the spine and leaf nodes since they are a part of this inventory group.
-
-    ``` yaml
-    --8<--
-    examples/campus-fabric/group_vars/DC1_NETWORK_PORTS.yml
-    --8<--
-    ```
 
 ## Network Services
 
