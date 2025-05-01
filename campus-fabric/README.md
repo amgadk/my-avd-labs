@@ -31,7 +31,7 @@ In a Campus network, it is common to refer to the location of the switches as **
 
 The drawing below shows the physical topology used in this example. The interface assignment shown here are referenced across the entire example, so keep that in mind if this example must be adapted to a different topology.
 
-![Figure: 1](images/campus_topo.svg)
+![Figure: 1](images/campus_topology.png)
 
 ## Basic EOS Switch Configuration
 
