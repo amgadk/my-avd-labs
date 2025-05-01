@@ -25,42 +25,6 @@ This example describes and includes all the AVD files used to build a Campus Fab
 ansible-playbook arista.avd.install_examples
 ```
 
-The output will show something similar to the following. If not, please ensure that AVD and all requirements are correctly installed.
-
-``` shell
- ~/ansible-avd-examples# ansible-playbook arista.avd.install_examples
-
-PLAY [Install Examples]***************************************************************************************************************************************************************************************************************************************************************
-
-TASK [Copy all examples to ~/ansible-avd-examples]*****************************************************************************************************************************************************
-changed: [localhost]
-
-PLAY RECAP
-****************************************************************************************************************************************************************************************************************************************************************************
-localhost                  : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-```
-
-After the playbook has run successfully, the following directory structure will be created.
-
-``` shell
-ansible-avd-examples/     (directory where playbook was run)
-  ├── campus-fabric/
-    ├── documentation/
-    ├── group_vars/
-    ├── images/
-    ├── intended/
-    ├── switch-basic-configurations/
-    ├── ansible.cfg
-    ├── build.yml
-    ├── deploy.yml
-    ├── inventory.yml
-    └── README.md (this document)
-```
-
-???+ info
-
-    If the content of any file in the example is ***modified*** and the playbook is run again, the file ***will not*** be overwritten. However, if any file in the example is ***deleted*** and the playbook is run again, the file will be re-created.
-
 ## Design Overview
 
 ### Physical Campus Fabric Topology
